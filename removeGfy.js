@@ -3,7 +3,7 @@
 window.addEventListener ("load", gfyclean(), false)
 
 function gfyclean() {
-    if (window.location.href != "https://gfycat.com/" && window.location.href != "gfycat.com"){
+        if (window.location.href != "https://gfycat.com/" && window.location.href != "gfycat.com" && window.location.href != "https://redgifs.com/" && window.location.href != "redgifs.com"){
         try {
             replacegfy();
         }
@@ -62,8 +62,10 @@ function gfyclean() {
 };
 
 function replacegfy() {
-    var vid;
-    vid = document.getElementsByClassName("video media")[0];
-    document.body.innerHTML = "<div class=\"container\"><video controls loop muted autoplay>" + vid.innerHTML + "</video></div>";
+    var vid = document.getElementsByClassName("video media")[0];
+    var str = vid.innerHTML;
+    var patt = new RegExp(".+?(<source src=\\\"https:\/\/giant\.gfycat\.com\/.+?\.webm\\\" type=\\\"video\/webm\\\">).+?");
+    var match = patt.exec(str)[1];
+    document.body.innerHTML = "<div class=\"container\"><video controls loop muted autoplay>" + match + "</video></div>";
     document.body.style.visibility = "visible";
 }
