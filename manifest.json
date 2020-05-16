@@ -30,6 +30,7 @@
     "permissions": [
         "*://*.gfycat.com/*", 
         "*://*.imgur.com/*",
+        "*://*.redgifs.com/*",
         "storage"
     ],
     
@@ -41,6 +42,17 @@
         },
 		{
             "matches": ["*://*.gfycat.com/*"],
+            "js": ["removeGfy.js"],
+            "css": ["centerVid.css"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["*://*.redgifs.com/*"],
+            "css": ["hideAll.css"],
+            "run_at": "document_start"
+        },
+		    {
+            "matches": ["*://*.redgifs.com/*"],
             "js": ["removeGfy.js"],
             "css": ["centerVid.css"],
             "run_at": "document_end"
