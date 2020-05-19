@@ -61,10 +61,12 @@ function gfyclean() {
     }
 };
 
-function replacegfy() {
+function replacegfy() {        
     var vid = document.getElementsByClassName("video media")[0];
     var str = vid.innerHTML;
     var patt = new RegExp(".+?(<source src=\\\"https:\/\/giant\.gfycat\.com\/.+?\.webm\\\" type=\\\"video\/webm\\\">).+?");
+    if (patt.exec(str) == null)
+            var patt = new RegExp(".+?(<source src=\\\"https:\/\/thumb1\.redgifs\.com\/.+?\.webm\\\" type=\\\"video\/webm\\\">).+?");
     var match = patt.exec(str)[1];
     document.body.innerHTML = "<div class=\"container\"><video controls loop muted autoplay>" + match + "</video></div>";
     document.body.style.visibility = "visible";
